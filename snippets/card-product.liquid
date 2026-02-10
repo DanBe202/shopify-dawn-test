@@ -203,7 +203,41 @@
                 </span>
               </p>
             {%- endif -%}
+            {%- for option in card_product.options_with_values -%}
+              {%- assign option_name_downcase = option.name | downcase -%}
+              {%- if option_name_downcase == 'color' or option_name_downcase == 'colour' -%}
+                <div class="card-color-swatches" style="display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap;">
+                  {%- for value in option.values -%}
+                    {%- assign variant_image_url = blank -%}
+                    {%- for variant in card_product.variants -%}
+                      {%- if variant.option1 == value or variant.option2 == value or variant.option3 == value -%}
+                        {%- if variant.featured_media != blank -%}
+                          {%- assign variant_image_url = variant.featured_media | image_url: width: 600 -%}
+                        {%- endif -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
 
+                    <label
+                            class="color-swatch-dot"
+                            style="
+                                    width: 16px;
+                                    height: 16px;
+                                    border-radius: 50%;
+                                    background-color: {{ value | split: ' ' | last | handle }};
+                                    border: 1px solid #ddd;
+                                    cursor: pointer;
+                                    position: relative;
+                                    "
+                            title="{{ value }}"
+                            data-image="{{ variant_image_url }}"
+                            onclick="changeCardImage(this)"
+                    >
+                    </label>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
@@ -622,3 +656,20 @@
     </div>
   </div>
 {%- endif -%}
+<script>
+  function changeCardImage(element) {
+    const newImage = element.getAttribute('data-image');
+    if (!newImage) return;
+
+    const card = element.closest('.card-wrapper');
+    if (!card) return;
+
+    const img = card.querySelector('.card__media img');
+
+    if (img) {
+      img.src = newImage;
+      img.srcset = newImage;
+      img.removeAttribute('loading');
+    }
+  }
+</script>
