@@ -15,6 +15,25 @@
   transform: perspective(0);
 }
 
+.mobile-video-only {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .mobile-video-only {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-video-only + .desktop-image-only {
+    display: none !important;
+  }
+}
+
 @media only screen and (max-width: 749px) {
   .banner--content-align-mobile-right .banner__box {
     text-align: right;
