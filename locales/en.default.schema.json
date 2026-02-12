@@ -420,6 +420,18 @@
           "label": "Extra extra large"
         }
       },
+      "heading_position": {
+        "label": "Heading position",
+        "options__1": {
+          "label": "Left"
+        },
+        "options__2": {
+          "label": "Middle"
+        },
+        "options__3": {
+          "label": "Right"
+        }
+      },
       "image_shape": {
         "options__1": {
           "label": "Default"
