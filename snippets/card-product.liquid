@@ -58,7 +58,8 @@
           style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         {%- if card_product.featured_media -%}
-          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+          <div
+              class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
             <div class="media media--transparent media--hover-effect">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
@@ -93,14 +94,14 @@
                   id="title-{{ section_id }}-{{ card_product.id }}"
                 {% endif %}
             >
-              <a
-                  href="{{ card_product.url }}"
-                  id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
-                  class="full-unstyled-link"
-                  aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-              >
+              {% comment %}<a{% endcomment %}
+                  {% comment %}href="{{ card_product.url }}"{% endcomment %}
+                  {% comment %}id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"{% endcomment %}
+                  {% comment %}class="full-unstyled-link"{% endcomment %}
+                  {% comment %}aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"{% endcomment %}
+              {% comment %}>{% endcomment %}
                 {{ card_product.title | escape }}
-              </a>
+              {% comment %}</a>{% endcomment %}
             </h3>
           </div>
           <div class="card__badge {{ settings.badge_position }}">
@@ -127,6 +128,28 @@
               </span>
             {%- endif -%}
           </div>
+          <div class="large-up-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
+            <a class="badge" href="{{ card_product.url }}">
+              <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="3" cy="3" r="3" fill="currentColor"/>
+                <circle cx="10" cy="3" r="3" fill="currentColor"/>
+                <circle cx="17" cy="3" r="3" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="medium-hide small-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
+            <div class="badge">
+              <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="3" cy="3" r="3" fill="currentColor"/>
+                <circle cx="10" cy="3" r="3" fill="currentColor"/>
+                <circle cx="17" cy="3" r="3" fill="currentColor"/>
+              </svg>
+              <a href="{{ card_product.url }}" class="shop-now-slide-btn">
+                Shop Now
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card__content">
@@ -137,14 +160,14 @@
                 id="title-{{ section_id }}-{{ card_product.id }}"
               {% endif %}
           >
-            <a
-                href="{{ card_product.url }}"
-                id="CardLink-{{ section_id }}-{{ card_product.id }}"
-                class="full-unstyled-link"
-                aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
-            >
+            {% comment %}<a{% endcomment %}
+                {% comment %}href="{{ card_product.url }}"{% endcomment %}
+                {% comment %}id="CardLink-{{ section_id }}-{{ card_product.id }}"{% endcomment %}
+                {% comment %}class="full-unstyled-link"{% endcomment %}
+                {% comment %}aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"{% endcomment %}
+            {% comment %}>{% endcomment %}
               {{ card_product.title | escape }}
-            </a>
+            {% comment %}</a>{% endcomment %}
           </h3>
           <div class="card-information">
             {%- if show_vendor -%}
@@ -189,33 +212,6 @@
                 </span>
               </p>
             {%- endif -%}
-            {%- for option in card_product.options_with_values -%}
-              {%- assign option_name_downcase = option.name | downcase -%}
-              {%- if option_name_downcase == 'color' or option_name_downcase == 'colour' -%}
-                <div class="card-color-swatches" style="display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap;">
-                  {%- for value in option.values -%}
-                    {%- assign variant_image_url = blank -%}
-                    {%- for variant in card_product.variants -%}
-                      {%- if variant.option1 == value or variant.option2 == value or variant.option3 == value -%}
-                        {%- if variant.featured_media != blank -%}
-                          {%- assign variant_image_url = variant.featured_media | image_url: width: 600 -%}
-                        {%- endif -%}
-                        {%- break -%}
-                      {%- endif -%}
-                    {%- endfor -%}
-
-                    <label
-                        class="card-color-swatch-dot"
-                        style="background-color: {{ value | split: ' ' | last | handle }}"
-                        title="{{ value }}"
-                        data-image="{{ variant_image_url }}"
-                        onclick="changeCardImage(this)"
-                    >
-                    </label>
-                  {%- endfor -%}
-                </div>
-              {%- endif -%}
-            {%- endfor -%}
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
@@ -300,6 +296,33 @@
                 </quantity-popover>
               {% endif %}
             {%- endif -%}
+            {%- for option in card_product.options_with_values -%}
+              {%- assign option_name_downcase = option.name | downcase -%}
+              {%- if option_name_downcase == 'color' or option_name_downcase == 'colour' -%}
+                <div class="card-color-swatches" style="display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap;">
+                  {%- for value in option.values -%}
+                    {%- assign variant_image_url = blank -%}
+                    {%- for variant in card_product.variants -%}
+                      {%- if variant.option1 == value or variant.option2 == value or variant.option3 == value -%}
+                        {%- if variant.featured_media != blank -%}
+                          {%- assign variant_image_url = variant.featured_media | image_url: width: 600 -%}
+                        {%- endif -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    <label
+                        class="card-color-swatch-dot"
+                        style="background-color: {{ value | split: ' ' | last | handle }}"
+                        title="{{ value }}"
+                        data-image="{{ variant_image_url }}"
+                        onclick="changeCardImage(this)"
+                    >
+                    </label>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
           </div>
         </div>
         {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
@@ -523,9 +546,9 @@
                         </a>
                       </div>
                       <div class="quick-add-modal__content-info--bulk-details large-up-hide">
-                        <a href="{{ card_product.url }}" class="full-unstyled-link">
+                        {% comment %}<a href="{{ card_product.url }}" class="full-unstyled-link">{% endcomment %}
                           <h3>{{ card_product.title | escape }}</h3>
-                        </a>
+                        {% comment %}</a>{% endcomment %}
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
                         {%- if card_product.quantity_price_breaks_configured? -%}
                           <div class="card__information-volume-pricing-note">
@@ -536,11 +559,11 @@
                     </div>
                     <div>
                       <div class="quick-add-modal__content-info--bulk-details small-hide medium-hide">
-                        <a href="{{ card_product.url }}" class="full-unstyled-link">
+                        {% comment %}<a href="{{ card_product.url }}" class="full-unstyled-link">{% endcomment %}
                           <h3 class="h2">
                             {{ card_product.title | escape }}
                           </h3>
-                        </a>
+                        {% comment %}</a>{% endcomment %}
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
                         {%- if card_product.quantity_price_breaks_configured? -%}
                           <div class="card__information-volume-pricing-note">
@@ -565,19 +588,48 @@
         <div class="card__badge {{ settings.badge_position }}">
           {%- if card_product.available == false -%}
             <span
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
+                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
             >
-              {{- 'products.product.sold_out' | t -}}
-            </span>
-          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+                {{- 'products.product.sold_out' | t -}}
+              </span>
+          {%- elsif card_product.metafields.custom.new_mark == true -%}
             <span
                 id="Badge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
-              {{- 'products.product.on_sale' | t -}}
+              New
             </span>
+          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            <span
+                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+            >
+                {{- 'products.product.on_sale' | t -}}
+              </span>
           {%- endif -%}
+        </div>
+        <div class="large-up-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
+          <a class="badge" href="{{ card_product.url }}">
+            <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="3" cy="3" r="3" fill="currentColor"/>
+              <circle cx="10" cy="3" r="3" fill="currentColor"/>
+              <circle cx="17" cy="3" r="3" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="medium-hide small-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
+          <div class="badge">
+            <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="3" cy="3" r="3" fill="currentColor"/>
+              <circle cx="10" cy="3" r="3" fill="currentColor"/>
+              <circle cx="17" cy="3" r="3" fill="currentColor"/>
+            </svg>
+            <a href="{{ card_product.url }}" class="shop-now-slide-btn">
+              Shop Now
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -652,4 +704,5 @@
             img.removeAttribute('loading');
         }
     }
+
 </script>
