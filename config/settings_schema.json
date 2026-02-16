@@ -1253,23 +1253,6 @@
         "default": 40
       },
       {
-        "type": "color_scheme",
-        "id": "sale_badge_color_scheme",
-        "label": "t:settings_schema.badges.settings.sale_badge_color_scheme.label",
-        "default": "scheme-5"
-      },
-      {
-        "type": "color_scheme",
-        "id": "sold_out_badge_color_scheme",
-        "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
-        "default": "scheme-3"
-      }
-    ]
-  },
-  {
-    "name": "t:settings_schema.badges.name",
-    "settings": [
-      {
         "type": "select",
         "id": "secondary_badge_position",
         "options": [
@@ -1302,6 +1285,18 @@
         "unit": "px",
         "label": "t:settings_schema.global.settings.corner_radius.label",
         "default": 40
+      },
+      {
+        "type": "color_scheme",
+        "id": "sale_badge_color_scheme",
+        "label": "t:settings_schema.badges.settings.sale_badge_color_scheme.label",
+        "default": "scheme-5"
+      },
+      {
+        "type": "color_scheme",
+        "id": "sold_out_badge_color_scheme",
+        "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
+        "default": "scheme-3"
       }
     ]
   },

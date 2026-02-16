@@ -2918,17 +2918,29 @@ details-disclosure > details {
 
 .badge {
   border: 1px solid transparent;
-  border-radius: var(--badge-corner-radius);
   display: inline-block;
   font-size: 1.2rem;
   letter-spacing: 0.1rem;
   line-height: 1;
-  padding: 0.5rem 1.3rem 0.6rem 1.3rem;
   text-align: center;
   background-color: rgb(var(--color-badge-background));
   border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
   color: rgb(var(--color-badge-foreground));
   word-break: break-word;
+}
+
+.primary-badge {
+  border-radius: var(--badge-corner-radius);
+  padding: 0.5rem 1.3rem 0.6rem 1.3rem;
+}
+
+.secondary-badge {
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: var(--secondary-badge-corner-radius);
+  padding: 0.5rem;
+  align-items: center;
+  display: flex;
 }
 
 .badge-interaction {
@@ -2944,7 +2956,7 @@ details-disclosure > details {
 .shop-now-slide-btn {
   display: inline-block;
   opacity: 0;
-  max-width: 0;
+  width: 0;
   margin-left: 0;
   white-space: nowrap;
   text-decoration: none;
@@ -2960,7 +2972,7 @@ details-disclosure > details {
 
 .badge-interaction:hover .shop-now-slide-btn {
   opacity: 1;
-  max-width: 100px;
+  width: 100px;
   margin-left: 10px;
   pointer-events: auto
 }

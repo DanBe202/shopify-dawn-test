@@ -108,28 +108,28 @@
             {%- if card_product.available == false -%}
               <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+                  class="badge primary-badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
               >
                 {{- 'products.product.sold_out' | t -}}
               </span>
             {%- elsif card_product.metafields.custom.new_mark == true -%}
               <span
                   id="Badge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                  class="badge primary-badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
               New
             </span>
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                  class="badge primary-badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>
             {%- endif -%}
           </div>
           <div class="large-up-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
-            <a class="badge" href="{{ card_product.url }}">
+            <a class="badge secondary-badge" href="{{ card_product.url }}">
               <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="3" cy="3" r="3" fill="currentColor"/>
                 <circle cx="10" cy="3" r="3" fill="currentColor"/>
@@ -139,7 +139,7 @@
           </div>
 
           <div class="medium-hide small-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
-            <div class="badge">
+            <div class="badge secondary-badge">
               <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="3" cy="3" r="3" fill="currentColor"/>
                 <circle cx="10" cy="3" r="3" fill="currentColor"/>
@@ -589,28 +589,28 @@
           {%- if card_product.available == false -%}
             <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+                class="badge primary-badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
             >
                 {{- 'products.product.sold_out' | t -}}
               </span>
           {%- elsif card_product.metafields.custom.new_mark == true -%}
             <span
                 id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                class="badge primary-badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
               New
             </span>
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
             <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                class="badge primary-badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
                 {{- 'products.product.on_sale' | t -}}
               </span>
           {%- endif -%}
         </div>
-        <div class="large-up-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
-          <a class="badge" href="{{ card_product.url }}">
+        <div class="large-up-hide card__badge  {{ settings.secondary_badge_position }} badge-interaction">
+          <a class="badge secondary-badge" href="{{ card_product.url }}">
             <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="3" cy="3" r="3" fill="currentColor"/>
               <circle cx="10" cy="3" r="3" fill="currentColor"/>
@@ -619,8 +619,8 @@
           </a>
         </div>
 
-        <div class="medium-hide small-hide card__badge {{ settings.secondary_badge_position }} badge-interaction">
-          <div class="badge">
+        <div class="medium-hide small-hide card__badge   {{ settings.secondary_badge_position }} badge-interaction">
+          <div class="badge secondary-badge">
             <svg width="20" height="6" viewBox="0 0 20 6" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="3" cy="3" r="3" fill="currentColor"/>
               <circle cx="10" cy="3" r="3" fill="currentColor"/>
