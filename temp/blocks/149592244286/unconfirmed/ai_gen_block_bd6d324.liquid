@@ -1,6 +1,271 @@
+{% doc %}
+  @prompt
+    show date that was chosen in settings that has a date picker
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-date-display-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-date-display__label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.label_font_size }}px;
+    color: {{ block.settings.label_color }};
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .ai-date-display__date-{{ ai_gen_id }} {
+    font-size: {{ block.settings.date_font_size }}px;
+    color: {{ block.settings.date_color }};
+    font-weight: {{ block.settings.date_font_weight }};
+  }
+
+  .ai-date-display__empty-state-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: #999;
+    font-style: italic;
+  }
+{% endstyle %}
+
+<div class="ai-date-display-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_label and block.settings.label != blank %}
+    <div class="ai-date-display__label-{{ ai_gen_id }}">
+      {{ block.settings.label }}
+    </div>
+  {% endif %}
+
+  {% if block.settings.selected_date != blank %}
+    <div class="ai-date-display__date-{{ ai_gen_id }}">
+      {% assign date_parts = block.settings.selected_date | split: '-' %}
+      {% assign year = date_parts[0] %}
+      {% assign month = date_parts[1] %}
+      {% assign day = date_parts[2] %}
+      
+      {% if block.settings.date_format == 'full' %}
+        {% case month %}
+          {% when '01' %}
+            {% assign month_name = 'January' %}
+          {% when '02' %}
+            {% assign month_name = 'February' %}
+          {% when '03' %}
+            {% assign month_name = 'March' %}
+          {% when '04' %}
+            {% assign month_name = 'April' %}
+          {% when '05' %}
+            {% assign month_name = 'May' %}
+          {% when '06' %}
+            {% assign month_name = 'June' %}
+          {% when '07' %}
+            {% assign month_name = 'July' %}
+          {% when '08' %}
+            {% assign month_name = 'August' %}
+          {% when '09' %}
+            {% assign month_name = 'September' %}
+          {% when '10' %}
+            {% assign month_name = 'October' %}
+          {% when '11' %}
+            {% assign month_name = 'November' %}
+          {% when '12' %}
+            {% assign month_name = 'December' %}
+        {% endcase %}
+        {{ month_name }} {{ day | plus: 0 }}, {{ year }}
+      {% elsif block.settings.date_format == 'short' %}
+        {{ month }}/{{ day }}/{{ year }}
+      {% elsif block.settings.date_format == 'iso' %}
+        {{ block.settings.selected_date }}
+      {% elsif block.settings.date_format == 'day_month_year' %}
+        {{ day | plus: 0 }} {{ month }} {{ year }}
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="ai-date-display__empty-state-{{ ai_gen_id }}">
+      Next, select a date in the settings
+    </div>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Date display",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Date"
+    },
+    {
+      "type": "text",
+      "id": "selected_date",
+      "label": "Selected date"
+    },
+    {
+      "type": "select",
+      "id": "date_format",
+      "label": "Date format",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full (January 15, 2026)"
+        },
+        {
+          "value": "short",
+          "label": "Short (01/15/2026)"
+        },
+        {
+          "value": "iso",
+          "label": "ISO (2026-01-15)"
+        },
+        {
+          "value": "day_month_year",
+          "label": "Day Month Year (15 01 2026)"
+        }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "header",
+      "content": "Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_label",
+      "label": "Show label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label text",
+      "default": "Event date"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Date style"
+    },
+    {
+      "type": "range",
+      "id": "date_font_size",
+      "label": "Date font size",
+      "min": 14,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Date color",
+      "default": "#121212"
+    },
+    {
+      "type": "select",
+      "id": "date_font_weight",
+      "label": "Date font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f3f3f3"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Date display"
+    }
+  ]
+}
 {% endschema %}
