@@ -63,7 +63,7 @@
           "type": "heading",
           "settings": {
             "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text": {
@@ -71,19 +71,31 @@
           "settings": {
             "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
           }
+        },
+        "button_734ixA": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
         }
       },
       "block_order": [
         "heading",
-        "text"
+        "text",
+        "button_734ixA"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
         "color_scheme": "scheme-5",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 0
+        "padding_bottom": 40
       }
     },
     "featured_collection_FfpYHX": {
@@ -94,6 +106,7 @@
         "products_to_show": 4,
         "title": "New arrivals",
         "heading_size": "h2",
+        "heading_position": "left-text",
         "description": "",
         "show_description": false,
         "description_style": "body",
