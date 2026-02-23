@@ -719,7 +719,13 @@
       },
       "shop_pay_external": {
         "return_to_store": "Повернутися до {{shopName}}",
-        "return_to_store_simple": "Повернути до магазину"
+        "return_to_store_simple": "Повернути до магазину",
+        "title": "Оплата в магазині",
+        "errors": {
+          "problem_loading": "Виникла проблема із завантаженням Shop Pay",
+          "try_again_later": "Перевірте з’єднання або закрийте це вікно та спробуйте ще раз через кілька хвилин.",
+          "checkout_has_expired": "Термін дії вашого замовлення закінчився. Закрийте це вікно та спробуйте оформити замовлення ще раз у {{shopName}} ."
+        }
       },
       "wallets": {
         "return_to_store": "Повернути до магазину",
@@ -1871,6 +1877,162 @@
         "order_updated_on": "Ваше замовлення було оновлено %{last_edited_at}.",
         "order_review_and_pay": "Ваше замовлення оновлено. Перегляньте та оплатіть, щоб підтвердити своє замовлення.",
         "pay_now": "Сплатити зараз"
+      },
+      "pickup_point": {
+        "number_of_pickup_points_near_location": {
+          "one": "%{count} пункт видачі поблизу вашого місцезнаходження",
+          "other": "%{count} пунктів видачі поблизу вашого місцезнаходження"
+        },
+        "change": "Змінити місцезнаходження",
+        "waiting_on_pickup_point_location_notice": "Пошук пунктів видачі...",
+        "geolocation": {
+          "shared_location_button": "Використовувати моє місцезнаходження",
+          "errors": {
+            "unsuported_by_browser": "Ваш браузер не підтримує геолокацію. Спробуйте ще раз або скористайтеся іншим браузером.",
+            "permission_not_allowed": "Дозволити обмін вашим місцезнаходженням.",
+            "permission_denied": "Не вдалося визначити ваше місцезнаходження. Спробуйте ще раз."
+          }
+        }
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Виникла проблема з нашою оплатою",
+          "message": "Оновіть цю сторінку або спробуйте ще раз через кілька хвилин",
+          "action": {
+            "cta": "Оновити сторінку"
+          },
+          "request_id": "Ідентифікатор запиту: {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Цей магазин захищений паролем",
+          "customer_account_required": "Для завершення оформлення замовлення потрібен обліковий запис клієнта",
+          "cart_completed": "Цю оплату вже завершено",
+          "invalid_cart": "Кошик більше не дійсний",
+          "not_authorized": "Не вдалося автентифікацію під час оформлення замовлення. Перевірте облікові дані вашої програми.",
+          "killswitch_enabled": "Оформлення замовлення тимчасово недоступне",
+          "policy_violation": "Не вдалося завершити оформлення замовлення через обмеження конфігурації політики",
+          "unrecoverable_failure": "Не вдалося завантажити оформлення замовлення. Спробуйте ще раз."
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Повернутися до кошика",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} для оновлення кількості",
+        "subscription_changed": "Одна з ваших підписок змінилася.",
+        "company_location_changed": "Ваш кошик оновлено. Перегляньте своє замовлення перед відправкою.",
+        "company_location_changed_product_removed": "Ваш кошик оновлено, оскільки деякі товари недоступні в цьому місці. Перегляньте своє замовлення, перш ніж відправляти його.",
+        "violations_title": "{{violation}} відсутній або недійсний",
+        "individual_violations_title": {
+          "DeliveryViolations": "Адреса доставки",
+          "PaymentViolations": "Платіжна адреса",
+          "OtherViolations": "Інформація про замовлення",
+          "UnhandledViolations": "Інформація про замовлення"
+        },
+        "all_violations_content": "Зателефонуйте або напишіть нам {{emailLink}} , щоб оновити цю інформацію та завершити замовлення:",
+        "all_violations_email_link": "електронна пошта",
+        "editable_shipping_address_violations_message_title": "Додайте цю інформацію, щоб завершити замовлення:",
+        "editable_shipping_address_violations_message_footer": "Щоб остаточно оновити адресу цього місця, {{emailLink}} .",
+        "editable_shipping_address_violations_email_link": "зв'яжіться з нами",
+        "shipping_address_incomplete_title": "Адреса доставки неповна",
+        "calculating_shipping": "Вартість доставки ще розраховується. Спробуйте ще раз через кілька секунд. З вас не стягнуто плату.",
+        "calculating_taxes": "Податки ще розраховуються. Спробуйте ще раз через кілька секунд. З вас не стягнуто плату.",
+        "generic_processing_error": {
+          "title": "Виникла проблема з обробкою вашого замовлення",
+          "body": "З вас не стягнуто плату. Спробуйте ще раз або скористайтеся іншим способом оплати."
+        },
+        "payment_method_not_available_with_payment_terms": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата цього замовлення тепер здійснюється на умовах {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата за це замовлення тепер має бути виконана",
+        "payment_method_not_available_with_fixed_terms": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата за це замовлення має бути здійснена пізніше",
+        "payment_method_not_available_with_review_requirement": "Вибраний вами спосіб оплати більше недоступний, оскільки платіж буде здійснено після підтвердження вашого замовлення.",
+        "contact_information": {
+          "title": "Контактна інформація недійсна",
+          "header": "Щоб оновити свою інформацію, {{emailLink}} .",
+          "email_link": "зв'яжіться з нами"
+        }
+      },
+      "review_address_modal": {
+        "title": "Адреса відгуку",
+        "subtitle": {
+          "one": "Це замовлення буде доставлено на адресу, надану продавцем {{merchant}} .",
+          "other": "Це замовлення буде доставлено на адресу, надану {{merchant}} . Виберіть адресу доставки."
+        },
+        "subtitle_no_match": "Ця адреса не відповідає жодній із ваших збережених адрес.",
+        "subtitle_must_use": "Ваше замовлення буде доставлено на цю адресу.",
+        "continue": "Продовжити з цією адресою",
+        "use_saved_address": "Використати іншу адресу",
+        "return_to_cart": "Повернутися до кошика"
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Огляд",
+          "link_label": "Умови та положення {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Є питання? Зв'яжіться з нами в чаті"
+      },
+      "local_pickup": {
+        "location_address_search_label": "Адреса",
+        "location_address_search_placeholder": "%{postal_code_label} або адреса",
+        "location_information": {
+          "one": "Поруч з вами є %{count} магазинів з товаром на складі",
+          "other": "Поруч з вами є %{count} місць із товарами на складі"
+        },
+        "toggle_location": "Змінити місцезнаходження",
+        "or": "АБО",
+        "cancel": "Скасувати",
+        "your_location": "ваше місцезнаходження",
+        "search_button": "Знайти магазини",
+        "no_stores_found": "Магазинів не знайдено",
+        "all_stores_far_away": {
+          "title": "Найближчі місця знаходяться на відстані більше %{distance}",
+          "description": "Виберіть місцезнаходження або %{ship_to_address_link}",
+          "ship_to_address_link": "відправити за адресою",
+          "change_location_link": "Змініть своє місцезнаходження"
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "Вибране вами раніше місцезнаходження більше недоступне",
+          "description": "Виберіть нове місцезнаходження або %{ship_to_address_link}",
+          "ship_to_address_link": "відправити за адресою"
+        },
+        "could_not_resolve_address": "Вашу адресу не вдалося знайти. Спробуйте ще раз або скористайтеся іншою адресою.",
+        "paginator": {
+          "accessibility_label": "Локальна пагінація самовивозу",
+          "previous": "Попередня сторінка",
+          "next": "Наступна сторінка",
+          "label": {
+            "one": "%{first} - %{last} магазинів з %{count}",
+            "other": "%{first} - %{last} з %{count} магазинів"
+          }
+        },
+        "reveal_more_label": {
+          "one": "Показати ще %{count} місцезнаходження",
+          "other": "Показати ще %{count} місць розташування"
+        }
+      },
+      "split_delivery": {
+        "pickup_all_items": "Забрати всі предмети",
+        "items_for_pickup": "Речі для самовивозу",
+        "delivery_method": "Метод розділеної доставки",
+        "delivery_method_menu": "Меню розділених способів доставки"
+      },
+      "captcha": {
+        "title": "Заповніть CAPTCHA, щоб продовжити",
+        "errors": {
+          "not_solved": "Заповніть CAPTCHA, щоб продовжити"
+        }
+      },
+      "clipboard": {
+        "copied": "Скопійовано",
+        "failed_to_copy": "Не вдалося скопіювати"
+      },
+      "discount_errors": {
+        "generic_error": "Ваше замовлення не вдалося обробити, оскільки ваш код знижки більше не доступний. Перегляньте загальну суму замовлення та спробуйте ще раз."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Ви більше не маєте дозволу розміщувати замовлення B2B. Щоб розмістити особисте замовлення, скористайтеся %{logout_url}.",
+        "log_out_link_text": "Вийти",
+        "lost_permissions_subtitle": "Ви більше не маєте дозволу розміщувати замовлення B2B. Вийдіть, щоб розмістити особисте замовлення.",
+        "lost_permissions_title": "Без дозволів на доступ до геоданих"
       }
     },
     "notices": {
