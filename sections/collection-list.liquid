@@ -88,8 +88,8 @@
         {%- endfor -%}
       </ul>
       {%- if show_mobile_slider or show_desktop_slider -%}
-        {%- if section.settings.show_slider_buttons -%}
-          <div class="slider-buttons">
+        {%- if section.settings.show_slider_buttons or section.settings.show_slider_buttons_mobile -%}
+          <div class="slider-buttons{% if section.settings.show_slider_buttons == false %} medium-hide large-up-hide{% endif %}{% if section.settings.show_slider_buttons_mobile == false %} small-hide{% endif %}">
             <button
               type="button"
               class="slider-button slider-button--prev"
@@ -100,11 +100,18 @@
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </span>
             </button>
-            <div class="slider-counter caption">
-              <span class="slider-counter--current">1</span>
-              <span aria-hidden="true"> / </span>
-              <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-              <span class="slider-counter--total">{{ section.blocks.size }}</span>
+            <div class="slider-counter slider-counter--dots">
+              <div class="slideshow__control-wrapper">
+                {%- for block in section.blocks -%}
+                  <button
+                    class="slider-counter__link slider-counter__link--dots link"
+                    aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                    aria-controls="Slider-{{ section.id }}"
+                  >
+                    <span class="dot"></span>
+                  </button>
+                {%- endfor -%}
+              </div>
             </div>
             <button
               type="button"
@@ -210,26 +217,6 @@
       "label": "t:sections.collection-list.settings.image_ratio.label"
     },
     {
-      "type": "select",
-      "id": "image_ratio_mobile",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "square",
-      "label": "Image ratio on mobile"
-    },
-    {
       "type": "range",
       "id": "columns_desktop",
       "min": 1,
@@ -270,6 +257,26 @@
     },
     {
       "type": "select",
+      "id": "image_ratio_mobile",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square",
+      "label": "Image ratio on mobile"
+    },
+    {
+      "type": "select",
       "id": "columns_mobile",
       "options": [
         {
@@ -289,6 +296,12 @@
       "id": "swipe_on_mobile",
       "default": false,
       "label": "t:sections.collection-list.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_slider_buttons_mobile",
+      "label": "Show slider controls",
+      "default": true
     },
     {
       "type": "header",

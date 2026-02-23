@@ -255,6 +255,7 @@
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
+        "show_slider_buttons_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
