@@ -97,3 +97,7 @@
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
 }
+
+.left-text { text-align: left; }
+.middle-text { text-align: center; }
+.right-text { text-align: right; }
