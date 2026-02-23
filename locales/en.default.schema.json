@@ -1048,6 +1048,10 @@
           "label": "Heading",
           "default": "Subscribe to our emails"
         },
+        "newsletter_subheading": {
+          "label": "Subheading",
+          "default": "Sign up to get the latest on sales, new releases, and more."
+        },
         "header__1": {
           "content": "Email signup",
           "info": "Signups add [customer profiles](https://help.shopify.com/manual/customers/manage-customers)"
@@ -1055,6 +1059,10 @@
         "show_social": {
           "label": "Social media icons",
           "info": "[Manage social accounts](/editor?context=theme&category=social%20media)"
+        },
+        "social_heading": {
+          "label": "Heading",
+          "default": "Follow us"
         },
         "enable_country_selector": {
           "label": "Country/region selector",

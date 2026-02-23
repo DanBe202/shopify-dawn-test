@@ -12,10 +12,10 @@
     "image_banner": {
       "type": "image-banner",
       "settings": {
-        "image": "shopify://shop_images/image-banner.png",
+        "image": "shopify://shop_images/woman-outside-brownstone_925x_b84389b6-9911-4b22-b558-2d360d5251a4.jpg",
         "video": "shopify://files/videos/preview.mp4",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
