@@ -102,8 +102,8 @@
       ],
       "settings": {
         "desktop_content_position": "center",
-        "mobile_content_position": "center",
         "content_alignment": "left",
+        "mobile_content_position": "center",
         "mobile_content_alignment": "left",
         "color_scheme": "scheme-5",
         "full_width": true,
@@ -194,55 +194,67 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
+    "collection_list_4VbkHB": {
+      "type": "collection-list",
       "blocks": {
-        "column1": {
-          "type": "column",
+        "featured_collection_V6Dtbj": {
+          "type": "featured_collection",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
+            "collection": "t-shirt-copy-copy-1"
           }
         },
-        "column2": {
-          "type": "column",
+        "featured_collection_w7ja7x": {
+          "type": "featured_collection",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
+            "collection": "t-shirt-copy"
           }
         },
-        "column3": {
-          "type": "column",
+        "featured_collection_nArEGR": {
+          "type": "featured_collection",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
+            "collection": "bags-copy"
+          }
+        },
+        "featured_collection_VzAgiK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bags"
+          }
+        },
+        "featured_collection_yUBPPe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "t-shirt-copy-copy"
+          }
+        },
+        "featured_collection_N3YfKq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suits-copy"
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "featured_collection_V6Dtbj",
+        "featured_collection_w7ja7x",
+        "featured_collection_nArEGR",
+        "featured_collection_VzAgiK",
+        "featured_collection_yUBPPe",
+        "featured_collection_N3YfKq"
       ],
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
+        "image_ratio": "portrait",
+        "image_ratio_mobile": "square",
+        "show_slider_buttons": false,
+        "enable_desktop_slider": true,
         "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
+        "show_view_all": false,
         "columns_mobile": "1",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -255,6 +267,6 @@
     "featured_collection_FfpYHX",
     "collage",
     "video",
-    "multicolumn"
+    "collection_list_4VbkHB"
   ]
 }

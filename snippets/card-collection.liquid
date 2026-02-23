@@ -23,6 +23,17 @@
   if ratio == 0 or ratio == null
     assign ratio = 1
   endif
+  assign ratio_mobile = 1
+  if card_collection.featured_image and media_aspect_ratio_mobile == 'portrait'
+    assign ratio_mobile = 0.8
+  elsif card_collection.featured_image and media_aspect_ratio_mobile == 'adapt'
+    assign ratio_mobile = card_collection.featured_image.aspect_ratio
+  elsif media_aspect_ratio_mobile == 'square'
+    assign ratio_mobile = 1
+  endif
+  if ratio_mobile == 0 or ratio_mobile == null
+    assign ratio_mobile = ratio
+  endif
   assign card_color_scheme = settings.card_color_scheme
   assign card_style = settings.card_style
   if wrapper_class == null or wrapper_class == 'none'
@@ -41,11 +52,11 @@
       {% if extend_height %} card--extend-height{% endif %}
       {% if card_collection.featured_image == nil and card_style == 'card' %} ratio{% endif %}
     "
-    style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+    style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; --ratio-percent-mobile: {{ 1 | divided_by: ratio_mobile | times: 100 }}%;"
   >
     <div
       class="card__inner {% if card_style == 'standard' %}color-{{ card_color_scheme }} gradient{% endif %}{% if card_collection.featured_image or card_style == 'standard' %} ratio{% endif %}"
-      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; --ratio-percent-mobile: {{ 1 | divided_by: ratio_mobile | times: 100 }}%;"
     >
       {%- if card_collection.featured_image -%}
         <div class="card__media">
