@@ -404,6 +404,13 @@
 .footer-block__image-wrapper {
   margin-bottom: 2rem;
   overflow: hidden !important;
+  max-width: min(100%, var(--image-width, 100px));
+}
+
+@media screen and (max-width: 989px) {
+  .footer-block__image-wrapper {
+    max-width: min(100%, var(--image-width-mobile, 100px));
+  }
 }
 
 .footer-block__image-wrapper img {
