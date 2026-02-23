@@ -527,7 +527,7 @@
     max-width: none !important;
   }
   .footer-block.grid__item:first-child {
-    flex: 1.5; /* Give the brand/social column slightly more room */
+    flex: 1.5;
     display: flex;
     flex-direction: column;
   }
@@ -756,5 +756,10 @@ details[open] .footer-block__summary .icon-minus {
   }
   .footer__localization h2 {
     margin-bottom: 0;
+  }
+
+  .footer__content-top {
+    padding-bottom: 3rem;
+    padding: 1.5rem;
   }
 }
