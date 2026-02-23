@@ -45,9 +45,11 @@
       "settings": {
         "color_scheme": "scheme-4",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "CALLING ALL DORINA SUPERFANS!",
+        "newsletter_subheading": "Sign up to be the first to hear about new products and exclusive offers.",
         "enable_follow_on_shop": true,
         "show_social": true,
+        "social_heading": "Follow us",
         "enable_country_selector": true,
         "enable_language_selector": false,
         "payment_enable": true,
