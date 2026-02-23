@@ -2,162 +2,256 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  @media screen and (min-width: 750px) {
-  .section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
+  @media screen and (min-width: 770px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
   }
 
   .discount-countdown-container {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: {{ section.settings.content_alignment }};
-  margin-top: 1rem;
-  font-variant-numeric: tabular-nums;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    font-variant-numeric: tabular-nums;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+  @media screen and (min-width: 770px) {
+    .rich-text__wrapper:has(.discount-countdown-container) {
+      position: relative;
+    }
+    .rich-text__blocks.left .discount-countdown-container {
+      position: absolute;
+      right: 25%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-top: 0;
+      width: auto;
+    }
+    .rich-text__blocks.right .discount-countdown-container {
+      position: absolute;
+      left: 25%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-top: 0;
+      width: auto;
+    }
+    .rich-text__blocks.center .discount-countdown-container {
+      position: static;
+      margin-top: 2rem;
+      transform: none;
+      width: 100%;
+      justify-content: center;
+    }
   }
   .countdown-title {
-  margin-right: 10px;
-  font-weight: bold;
+    margin-right: 0.5rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .timer-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0;
   }
   .time-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    min-width: 3.5rem;
   }
   .time-block span {
-  font-size: 1.5rem;
-  font-weight: bold;
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    font-family: inherit;
   }
   .time-block small {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  opacity: 0.8;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+  }
+  .time-separator {
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0.7;
+    padding: 0 0.2rem;
+    align-self: flex-start;
   }
 {%- endstyle -%}
 
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
   <div
-      class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding"
+  >
     <div
-        class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
-      <div class="rich-text__blocks {{ section.settings.content_alignment }}">
+      class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }} mobile-content-position-{{ section.settings.mobile_content_position }}{% if section.settings.full_width %} page-width{% endif %}"
+    >
+      <div class="rich-text__blocks {{ section.settings.content_alignment }} mobile-content-alignment-{{ section.settings.mobile_content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
               <h2
-                  class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
+                class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
               >
                 {{ block.settings.heading }}
               </h2>
             {%- when 'caption' -%}
               <p
-                  class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
+                class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
               >
                 {{ block.settings.caption | escape }}
               </p>
             {%- when 'text' -%}
               <div
-                  class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
+                class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
               >
                 {{ block.settings.text }}
               </div>
             {%- when 'button' -%}
               <div
-                  class="rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  {{ block.shopify_attributes }}
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
+                class="rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
               >
                 {%- if block.settings.button_label != blank -%}
                   <a
-                      {% if block.settings.button_link == blank %}
-                        role="link" aria-disabled="true"
-                      {% else %}
-                        href="{{ block.settings.button_link }}"
-                      {% endif %}
-                      class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                    {% if block.settings.button_link == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                   >
                     {{- block.settings.button_label | escape -}}
                   </a>
                 {%- endif -%}
                 {%- if block.settings.button_label_2 != blank -%}
                   <a
-                      {% if block.settings.button_link_2 == blank %}
-                        role="link" aria-disabled="true"
-                      {% else %}
-                        href="{{ block.settings.button_link_2 }}"
-                      {% endif %}
-                      class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                    {% if block.settings.button_link_2 == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
                   >
                     {{- block.settings.button_label_2 | escape -}}
                   </a>
                 {%- endif -%}
               </div>
             {%- when 'promo' -%}
-              <div class="discount-countdown-container"
-                   id="countdown-timer-{{ block.id }}"
-                   data-end-date="{{ block.settings.end_date }}"
-                   data-expiration-action="{{ block.settings.expiration_action }}"
-                  {{ block.shopify_attributes }}>
-
+              <div
+                class="discount-countdown-container"
+                id="countdown-timer-{{ block.id }}"
+                {{ block.shopify_attributes }}
+              >
                 {%- if block.settings.heading != blank -%}
                   <div class="countdown-title">{{ block.settings.heading }}</div>
                 {%- endif -%}
 
-                <div class="time-block">
-                  <span class="days">00</span><small>Days</small>
-                </div>
-                <div class="time-block">
-                  <span class="hours">00</span><small>Hours</small>
-                </div>
-                <div class="time-block">
-                  <span class="minutes">00</span><small>Min</small>
-                </div>
-                <div class="time-block">
-                  <span class="seconds">00</span><small>Sec</small>
+                <div class="timer-wrapper">
+                  <div class="time-block"><span class="days">00</span><small>DAY</small></div>
+                  <span class="time-separator">:</span>
+                  <div class="time-block"><span class="hours">00</span><small>HOUR</small></div>
+                  <span class="time-separator">:</span>
+                  <div class="time-block"><span class="minutes">00</span><small>MIN</small></div>
+                  <span class="time-separator">:</span>
+                  <div class="time-block"><span class="seconds">00</span><small>SEC</small></div>
                 </div>
               </div>
+              <script>
+                function initCountdown() {
+                  const container = document.getElementById('countdown-timer-{{ block.id }}');
+                  if (!container) return;
+
+                  const dateStr = '{{ block.settings.end_date }}';
+                  const timeStr = '{{ block.settings.end_time }}';
+                  const action = '{{ block.settings.expiration_action }}';
+
+                  if (!dateStr || !timeStr) return;
+
+                  const fullDateStr = dateStr + 'T' + timeStr;
+                  const countDownDate = new Date(fullDateStr).getTime();
+
+                  if (isNaN(countDownDate)) return;
+
+                  const x = setInterval(function () {
+                    const now = new Date().getTime();
+                    const distance = countDownDate - now;
+
+                    if (distance < 0) {
+                      clearInterval(x);
+                      if (action === 'hide') {
+                        container.style.display = 'none';
+                      } else {
+                        container.querySelector('.days').innerText = '00';
+                        container.querySelector('.hours').innerText = '00';
+                        container.querySelector('.minutes').innerText = '00';
+                        container.querySelector('.seconds').innerText = '00';
+                      }
+                      return;
+                    }
+
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    container.querySelector('.days').innerText = days < 10 ? '0' + days : days;
+                    container.querySelector('.hours').innerText = hours < 10 ? '0' + hours : hours;
+                    container.querySelector('.minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                    container.querySelector('.seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+                  }, 1000);
+                }
+
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', initCountdown);
+                } else {
+                  initCountdown();
+                }
+              </script>
           {%- endcase -%}
         {%- endfor -%}
       </div>
     </div>
   </div>
 </div>
-
 {% schema %}
 {
   "name": "t:sections.rich-text.name",
   "tag": "section",
   "class": "section",
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer"
-    ]
+    "groups": ["header", "footer"]
   },
   "settings": [
     {
@@ -199,6 +293,46 @@
       ],
       "default": "center",
       "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Mobile content position"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Mobile content alignment"
     },
     {
       "type": "color_scheme",
@@ -406,8 +540,15 @@
           "type": "text",
           "id": "end_date",
           "label": "End Date",
-          "info": "Format: YYYY-MM-DDTHH:MM (e.g., 2024-12-31T23:59)",
-          "default": "2026-01-01T00:00"
+          "info": "Format: YYYY-MM-DD (e.g., 2026-12-31)",
+          "default": "2026-12-31"
+        },
+        {
+          "type": "text",
+          "id": "end_time",
+          "label": "End Time",
+          "info": "Format: HH:MM:SS (24-hour format, e.g., 23:59:59)",
+          "default": "00:00:00"
         },
         {
           "type": "select",

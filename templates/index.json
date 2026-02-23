@@ -62,16 +62,18 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h2"
+            "heading": "Limited time only",
+            "heading_size": "h3"
           }
         },
-        "text": {
-          "type": "text",
+        "heading2": {
+          "type": "heading",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+            "heading": "SALE UP TO 40% OFF",
+            "heading_size": "h3"
           }
         },
+
         "button_734ixA": {
           "type": "button",
           "settings": {
@@ -86,19 +88,24 @@
         "promo": {
           "type": "promo",
           "settings": {
-            "promo_discount": ""
+            "heading": "Sale ends in:",
+            "end_date": "2026-04-04",
+            "end_time": "23:59:59",
+            "expiration_action": "zero"
           }
         }
       },
       "block_order": [
         "heading",
-        "text",
+        "heading2",
         "button_734ixA",
         "promo"
       ],
       "settings": {
-        "desktop_content_position": "left",
+        "desktop_content_position": "center",
+        "mobile_content_position": "center",
         "content_alignment": "left",
+        "mobile_content_alignment": "left",
         "color_scheme": "scheme-5",
         "full_width": true,
         "padding_top": 40,
