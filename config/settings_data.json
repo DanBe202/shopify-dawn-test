@@ -123,6 +123,8 @@
     "cart_type": "notification",
     "show_vendor": false,
     "show_cart_note": false,
+    "mega_menu_title_gap": 12,
+    "mega_menu_items_gap": 4,
     "cart_drawer_collection": "",
     "sections": {
       "main-password-header": {

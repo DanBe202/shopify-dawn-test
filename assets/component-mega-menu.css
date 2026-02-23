@@ -45,14 +45,14 @@
 .mega-menu__list__child {
   display: flex;
   flex-direction: column;
-  gap: 12px; 
+  gap: var(--mega-menu-title-gap, 12px); 
   list-style: none;
 }
 
 .mega-menu__list__child-of-child {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--mega-menu-items-gap, 4px);
   list-style: none;
 }
 
