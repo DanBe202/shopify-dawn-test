@@ -105,13 +105,14 @@
                     'templates.search.results_with_count'
                     | t: terms: collection.terms, count: collection.results_count
                   }}
-                {%- elsif collection.products_count == collection.all_products_count -%}
-                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
                 {%- else -%}
-                  {{
-                    'products.facets.product_count'
-                    | t: product_count: collection.products_count, count: collection.all_products_count
-                  }}
+                  {%- assign count_current = paginate.current_offset | plus: collection.products.size -%}
+                  {%- assign count_start = paginate.current_offset | plus: 1 -%}
+                  {%- if collection.products_count == collection.all_products_count -%}
+                    Viewing {{ count_start }} - {{ count_current }} of {{ collection.products_count }} products
+                  {%- else -%}
+                    Viewing {{ count_start }} - {{ count_current }} of {{ collection.products_count }} products
+                  {%- endif -%}
                 {%- endif -%}
               </span>
             </h2>
