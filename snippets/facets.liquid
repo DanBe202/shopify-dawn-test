@@ -431,11 +431,12 @@
               <h2 class="facet-filters__label caption-large text-body">
                 <label for="ShowBy">Show</label>
               </h2>
+              {%- assign current_show = products_per_page | default: 12 -%}
               <div class="select">
                 <select name="show" class="facet-filters__sort select__select caption-large" id="ShowBy">
                   <option
                     value="12"
-                    {% if url_params contains 'show=12' or show_param == 12 %}
+                    {% if current_show == 12 %}
                       selected
                     {% endif %}
                   >
@@ -443,7 +444,7 @@
                   </option>
                   <option
                     value="24"
-                    {% if url_params contains 'show=24' or show_param == 24 %}
+                    {% if current_show == 24 %}
                       selected
                     {% endif %}
                   >
@@ -451,7 +452,7 @@
                   </option>
                   <option
                     value="36"
-                    {% if url_params contains 'show=36' or show_param == 36 %}
+                    {% if current_show == 36 %}
                       selected
                     {% endif %}
                   >
