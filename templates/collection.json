@@ -1,10 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
       "type": "image-banner",
       "settings": {
         "image": "shopify://shop_images/young-hip-woman-at-carnival_925x_e628fa46-52ec-4fe5-85ed-a546748e0827.jpg",
-        "video": "",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "image_behavior": "none",
@@ -31,13 +39,17 @@
       "settings": {
         "products_per_page": 12,
         "columns_desktop": 4,
-        "image_ratio": "adapt",
+        "columns_mobile": "2",
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "quick_add": "none",
         "enable_filtering": true,
+        "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
       }
