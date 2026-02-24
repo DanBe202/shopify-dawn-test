@@ -37,7 +37,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "quantity_selector": {
@@ -58,8 +59,8 @@
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materials",
-            "icon": "leather",
+            "heading": "Details",
+            "icon": "none",
             "content": "",
             "page": ""
           }
@@ -67,8 +68,8 @@
         "collapsible-row-1": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
+            "heading": "Fabric",
+            "icon": "none",
             "content": "",
             "page": ""
           }
@@ -76,8 +77,8 @@
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
+            "heading": "Composition",
+            "icon": "none",
             "content": "",
             "page": ""
           }
@@ -85,9 +86,9 @@
         "collapsible-row-3": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
+            "heading": "Washing methods",
+            "icon": "none",
+            "content": "<ul><li>One-piece moulded cup</li><li>Wireless</li><li>Multi-way, adjustable & removable shoulder straps</li><li>DORINA ECO shiny micro fabric </li><li>DORINA ECO power mesh Non-slip elastic on back wings</li><li>Three-strand micro fabric hook and eye fastening</li></ul>",
             "page": ""
           }
         },
@@ -115,10 +116,14 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "color_scheme": "",
         "media_size": "large",
         "constrain_to_viewport": true,
+        "media_fit": "contain",
         "gallery_layout": "stacked",
         "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
@@ -151,10 +156,12 @@
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
+        "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
+        "section_color_scheme": "",
         "color_scheme": "scheme-2",
         "padding_top": 36,
         "padding_bottom": 36
@@ -208,10 +215,12 @@
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
