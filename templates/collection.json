@@ -1,5 +1,22 @@
 {
   "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/woman-outside-brownstone_925x_b84389b6-9911-4b22-b558-2d360d5251a4.jpg",
+        "video": "",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -26,6 +43,7 @@
     }
   },
   "order": [
+    "image_banner",
     "banner",
     "product-grid"
   ]
