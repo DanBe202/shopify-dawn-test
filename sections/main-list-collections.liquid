@@ -23,12 +23,26 @@
       assign paginate_by = 28
     endif
   -%}
+  {%- liquid
+    assign subcollection_handles = ''
+    for col in collections
+      if col.metafields.custom.subcollection_category.value != blank
+        for subcol in col.metafields.custom.subcollection_category.value
+          assign subcollection_handles = subcollection_handles | append: subcol.handle | append: ','
+        endfor
+      endif
+    endfor
+    assign subcollection_handles_array = subcollection_handles | split: ','
+  -%}
   {%- paginate collections by paginate_by -%}
     <ul
       class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
       role="list"
     >
       {%- for collection in collections -%}
+        {%- if subcollection_handles_array contains collection.handle -%}
+          {%- continue -%}
+        {%- endif -%}
         <li
           class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}

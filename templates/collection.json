@@ -22,6 +22,7 @@
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
+        "image_ratio": "portrait",
         "color_scheme": "scheme-1"
       }
     },
