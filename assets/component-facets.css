@@ -19,8 +19,9 @@
   }
 
   .facets__form .product-count {
-    grid-column-start: 3;
-    align-self: flex-start;
+    grid-column-start: 1;
+    grid-row-start: 3;
+    align-self: center;
   }
 }
 
@@ -45,11 +46,16 @@
   }
 }
 
+.facet-filters.show-count {
+  grid-row: 3;
+  align-self: center;
+}
+
 .facet-filters__label {
   display: block;
-  color: rgba(var(--color-foreground), 0.85);
+  color: #2e747b;
   font-size: 1.4rem;
-  margin: 0 2rem 0 0;
+  margin: 0 0.5rem 0 0;
 }
 
 .facet-filters__summary {
@@ -74,6 +80,8 @@
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
+  border-bottom: 1px solid #efded0;
+  padding-bottom: 4px;
 }
 
 .facet-filters__field .select {
@@ -113,6 +121,7 @@
   margin: 0;
   padding-left: 0;
   padding-right: 1.75rem;
+  color: #2e747b;
 }
 
 .facet-filters__sort + .icon-caret {
@@ -163,8 +172,8 @@
 
 .facets__form {
   display: grid;
-  gap: 0 3.5rem;
-  grid-template-columns: 1fr max-content max-content;
+  gap: 3rem 3.5rem;
+  grid-template-columns: 1fr max-content;
   margin-bottom: 0.5rem;
 }
 
@@ -175,6 +184,7 @@
   grid-row: 1;
   display: flex;
   flex-wrap: wrap;
+  gap: 1.2rem;
 }
 
 .facets__heading {
@@ -189,19 +199,35 @@
 }
 
 .facets__disclosure {
-  margin-right: 3.5rem;
+  margin-right: 0;
 }
 
 .facets__summary {
-  color: rgba(var(--color-foreground), 0.75);
+  color: #2e747b;
   font-size: 1.4rem;
-  padding: 0 1.75rem 0 0;
-  margin-bottom: 1.5rem;
+  padding: 1rem 1.8rem;
+  margin-bottom: 0;
+  border: 1px solid #efded0;
+  border-radius: 40px;
+  background-color: transparent;
+}
+
+.facets__summary > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .facets__summary .svg-wrapper {
   height: auto;
   width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.facets__summary .icon-caret {
+  color: #2e747b;
+  width: 1.2rem;
 }
 
 .facets__disclosure fieldset {
@@ -212,7 +238,8 @@
 
 .facets__disclosure[open] .facets__summary,
 .facets__summary:hover {
-  color: rgb(var(--color-foreground));
+  color: #2e747b;
+  border-color: #2e747b;
 }
 
 .facets__disclosure[open] .facets__display,
@@ -230,7 +257,7 @@
 }
 
 .facets__and-helptext {
-  color: rgba(var(--color-foreground), 0.5);
+  color: #2e747b;
   font-size: calc(var(--font-heading-scale) * 1.2rem);
   line-height: calc(var(--font-heading-scale) * 1.2rem);
 }
@@ -262,13 +289,14 @@
 
 .facets__summary .icon-caret {
   right: 0;
+  color: #2e747b;
 }
 
 .facets__display {
   border-width: var(--popup-border-width);
   border-style: solid;
   border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
-  border-radius: var(--popup-corner-radius);
+  border-radius: 20px;
   box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
     rgba(var(--color-shadow), var(--popup-shadow-opacity));
   background-color: rgb(var(--color-background));
@@ -590,15 +618,16 @@ button.facets__button {
 }
 
 span.active-facets__button-inner {
-  color: rgb(var(--color-foreground));
-  box-shadow: 0 0 0 0.1rem rgb(var(--color-foreground));
-  border-radius: 2.6rem;
+  color: #2e747b;
+  background-color: #fcf2de;
+  border-radius: 40px;
   font-size: 1rem;
   min-height: 0;
   min-width: 0;
-  padding: 0.25rem 1.25rem;
+  padding: 1rem 1.8rem;
   display: flex;
   align-items: center;
+  border: 1px solid transparent;
 }
 
 span.active-facets__button-inner:before,
@@ -615,6 +644,7 @@ span.active-facets__button-inner:after {
 
 .active-facets__button-wrapper * {
   font-size: 1rem;
+  color: #2e747b;
 }
 
 @media screen and (min-width: 990px) {
@@ -651,15 +681,17 @@ span.active-facets__button-inner:after {
 }
 
 .active-facets__button:hover .active-facets__button-inner {
-  box-shadow: 0 0 0 0.2rem rgb(var(--color-foreground));
+  box-shadow: none;
+  border: 1px solid #2e747b;
 }
 
 .active-facets__button--light .active-facets__button-inner {
-  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
+  box-shadow: none;
 }
 
 .active-facets__button--light:hover .active-facets__button-inner {
-  box-shadow: 0 0 0 0.2rem rgba(var(--color-foreground), 0.4);
+  box-shadow: none;
+  border: 1px solid #2e747b;
 }
 
 a.active-facets__button:focus-visible {
@@ -1098,8 +1130,9 @@ input.mobile-facets__checkbox {
 
 .product-count {
   align-self: center;
+  justify-self: start;
   position: relative;
-  text-align: right;
+  text-align: left;
 }
 
 .product-count__text {
