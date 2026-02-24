@@ -5,3 +5,105 @@
 .related-products__heading {
   margin: 0 0 3rem;
 }
+
+.related-products .slider-buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.related-products .slider-counter {
+  min-width: unset;
+  margin: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .related-products slider-component {
+    position: relative;
+  }
+
+  .related-products .slider-buttons {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
+    margin-top: 0;
+  }
+
+  .related-products .slider-button {
+    pointer-events: auto;
+    background-color: rgb(var(--color-background));
+    border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    border-radius: 50%;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    width: 4.4rem;
+    height: 4.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .related-products .slider-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  }
+
+  .related-products .slider-button--prev {
+    transform: translateX(-50%);
+  }
+
+  .related-products .slider-button--next {
+    transform: translateX(50%);
+  }
+
+  .related-products .slider-button--prev:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+
+  .related-products .slider-button--next:hover {
+    transform: translateX(50%) scale(1.05);
+  }
+
+  .related-products .slider-counter {
+    display: none;
+  }
+
+  .related-products .slider--desktop.grid--4-col-desktop .grid__item {
+    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+  }
+  
+  /* Support for other configurations */
+  .related-products .slider--desktop.grid--3-col-desktop .grid__item {
+    width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+  }
+  .related-products .slider--desktop.grid--5-col-desktop .grid__item {
+    width: calc(20% - var(--grid-desktop-horizontal-spacing) * 4 / 5);
+  }
+  .related-products .slider--desktop.grid--6-col-desktop .grid__item {
+    width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
+  }
+
+  .related-products .slider--desktop:after {
+    display: none;
+  }
+  .related-products .slider--desktop .slider__slide:first-child {
+    margin-left: 0;
+    scroll-margin-left: 0;
+  }
+  .related-products .slider--desktop {
+    scroll-padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .related-products .slider-buttons {
+    align-items: center;
+    gap: 1rem;
+  }
+}
