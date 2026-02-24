@@ -2286,9 +2286,14 @@
             },
             "image_ratio": {
               "label": "Image ratio",
-              "options": {
-                "option_1": "Portrait",
-                "option_2": "Square"
+              "option_1": {
+                "label": "Adapt to image"
+              },
+              "option_2": {
+                "label": "Portrait"
+              },
+              "option_3": {
+                "label": "Square"
               }
             },
             "enable_quick_add": {
