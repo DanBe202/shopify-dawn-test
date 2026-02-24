@@ -91,12 +91,6 @@
             "content": "<ul><li>One-piece moulded cup</li><li>Wireless</li><li>Multi-way, adjustable & removable shoulder straps</li><li>DORINA ECO shiny micro fabric </li><li>DORINA ECO power mesh Non-slip elastic on back wings</li><li>Three-strand micro fabric hook and eye fastening</li></ul>",
             "page": ""
           }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
@@ -111,8 +105,7 @@
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
-        "collapsible-row-3",
-        "share"
+        "collapsible-row-3"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -120,94 +113,70 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "columns",
         "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
-        "padding_top": 36,
+        "padding_top": 0,
         "padding_bottom": 12
       }
     },
-    "image-with-text": {
-      "type": "image-with-text",
+    "slideshow_E6jrKb": {
+      "type": "slideshow",
       "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
+        "slide_JDektk": {
+          "type": "slide",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "image": "shopify://shop_images/leather-jacket-and-tea_925x_87bd4a92-1100-4324-9fc0-7a44c3f18231.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "Just in",
+            "heading_size": "h2",
+            "subheading": "SHAPEWEAR <strong>FLATTERING LOOKS FOR EVERY OCCASION</strong>",
+            "button_label": "Shop now",
+            "link": "shopify://collections/suits-copy",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "top-right",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-5"
           }
         },
-        "image-with-text-1": {
-          "type": "text",
+        "slide_LGDpjG": {
+          "type": "slide",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
+            "image": "shopify://shop_images/woman-outside-brownstone_925x_b84389b6-9911-4b22-b558-2d360d5251a4.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "Just out",
+            "heading_size": "h2",
+            "subheading": "Get the best",
+            "button_label": "Shop now",
+            "link": "shopify://collections/frontpage",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "top-left",
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "color_scheme": "scheme-5"
           }
         }
       },
       "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
+        "slide_JDektk",
+        "slide_LGDpjG"
       ],
+      "name": "t:sections.slideshow.presets.name",
       "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "numbers",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
         "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-0",
-        "column-1"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "related-products": {
@@ -215,11 +184,11 @@
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
-        "products_to_show": 4,
+        "products_to_show": 6,
         "columns_desktop": 4,
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -227,12 +196,67 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "rich_text_WpnyjK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_HaVRTa": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Limited time only</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_epKArx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>SALE UP TO 40% OFF</p>"
+          }
+        },
+        "button_BQt7Rw": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/frontpage",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "promo_7PApm9": {
+          "type": "promo",
+          "settings": {
+            "heading": "Sale ends in:",
+            "end_date": "2026-12-31",
+            "end_time": "00:00:00",
+            "expiration_action": "zero"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HaVRTa",
+        "text_epKArx",
+        "button_BQt7Rw",
+        "promo_7PApm9"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "mobile_content_position": "center",
+        "mobile_content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
-    "image-with-text",
-    "multicolumn",
-    "related-products"
+    "slideshow_E6jrKb",
+    "related-products",
+    "rich_text_WpnyjK"
   ]
 }
