@@ -37,13 +37,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "picker_type": "color_circle"
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -99,7 +94,6 @@
         "caption",
         "price",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "description",
         "collapsible-row-0",

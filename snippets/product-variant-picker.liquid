@@ -52,6 +52,34 @@
             picker_type: picker_type
           %}
         </fieldset>
+      {%- elsif picker_type == 'color_circle' -%}
+        {%- assign option_name_downcase = option.name | downcase -%}
+        {%- if option_name_downcase == 'color' or option_name_downcase == 'colour' -%}
+          <fieldset class="js product-form__input product-form__input--color-circle">
+            <legend class="form__label">{{ option.name }}</legend>
+            <style>
+              .color-circle-input:checked + .color-circle-label {
+                box-shadow: 0 0 0 2px rgb(var(--color-background)), 0 0 0 4px rgba(var(--color-foreground), 1);
+              }
+            </style>
+            {% render 'product-variant-options',
+              product: product,
+              option: option,
+              block: block,
+              picker_type: picker_type
+            %}
+          </fieldset>
+        {%- else -%}
+          <fieldset class="js product-form__input product-form__input--pill">
+            <legend class="form__label">{{ option.name }}</legend>
+            {% render 'product-variant-options',
+              product: product,
+              option: option,
+              block: block,
+              picker_type: 'button'
+            %}
+          </fieldset>
+        {%- endif -%}
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
           <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">

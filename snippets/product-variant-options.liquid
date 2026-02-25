@@ -66,8 +66,7 @@
       {{ label_unavailable }}
     {%- endcapture -%}
 
-    {%
-      render 'swatch-input',
+    {% render 'swatch-input',
       id: input_id,
       name: input_name,
       value: escaped_value,
@@ -96,6 +95,31 @@
     >
     <label for="{{ input_id }}">
       {{ value -}}
+      {{ label_unavailable }}
+    </label>
+  {%- elsif picker_type == 'color_circle' -%}
+    <input
+      type="radio"
+      id="{{ input_id }}"
+      name="{{ input_name | escape }}"
+      value="{{ escaped_value }}"
+      form="{{ product_form_id }}"
+      {% if value.selected %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+      {{ input_dataset }}
+      class="color-circle-input visually-hidden"
+    >
+    <label
+      for="{{ input_id }}"
+      class="card-color-swatch-dot color-circle-label{% if option_disabled %} disabled{% endif %}"
+      style="background-color: {{ value | split: ' ' | last | handle }}; display: inline-block; margin-right: 5px; margin-bottom: 5px; vertical-align: middle;"
+      title="{{ value }}"
+    >
+      <span class="visually-hidden">{{ value -}}</span>
       {{ label_unavailable }}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
